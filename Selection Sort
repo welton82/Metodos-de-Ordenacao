@@ -1,0 +1,66 @@
+#include<iostream>
+#define MAX 100
+using namespace std;
+
+int main()
+{
+
+    int n;
+
+    bool troca = true;
+    int i = 1;
+
+    cout << "Informe Valor De Elementos: ";
+    cin >> n;
+    int vetor[MAX];
+    int x = n;
+
+    while(i <= n)
+    {
+
+        cout << "Informe Valor Para Inserção: ";
+        cin >> vetor[i];
+        i++;
+
+    }
+    cout << "valores informados: ";
+    for(int i = 1; i<=n; i++)
+    {
+        cout << vetor[i] << "\t";
+    }
+    cout << "\n===============================\n";
+
+    while(troca == true)
+    {
+        troca = false;
+
+        x = n;
+
+        while(x > 1)
+        {
+
+            if(vetor[x] < vetor[x-1])
+            {
+
+                int aux = vetor[x];
+                vetor[x] = vetor[x-1];
+                vetor[x-1] = aux;
+                troca = true;
+
+            }
+            x--;
+        }
+
+
+    }
+    cout << "\n===============================\n";
+    cout << "\nValores Ordenados: ";
+    for(int i = 1; i<=n; i++)
+    {
+        cout << vetor[i] << "\t";
+    }
+
+    return 0;
+}
+
+
