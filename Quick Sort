@@ -1,0 +1,70 @@
+#include <iostream>
+#include <stdlib.h>
+using namespace std;
+
+int Particiona(int *v, int inicio, int fim){
+    int esq, dir,pivo,aux;
+    esq = inicio;
+    dir = fim;
+    pivo = v[inicio];
+
+    while(esq < dir){
+
+        while(v[esq] <= pivo)//avança posição da esquerda
+            esq++;
+        while(v[dir] > pivo)//recua posição da direita
+            dir--;
+        if(esq < dir)//troca esquerda e direita
+        {
+            aux = v[esq];
+            v[esq] = v[dir];
+            v[dir] = aux;
+        }
+    }
+    v[inicio] = v[dir];
+    v[dir] = pivo;
+    return dir;
+
+}
+
+void QuickSort(int *v, int inicio, int fim){
+    if(inicio < fim)
+    {
+        int pivo = Particiona(v,inicio,fim);
+        QuickSort(v, inicio, pivo-1);
+        QuickSort(v,pivo+1,fim);
+    }
+}
+
+
+int main()
+{
+    int n, i;
+    cout << "Tamanho de n: ";
+    cin >> n;
+    int x = n-1;
+    int vetor[n];
+    cout << "\nEntrada dos dados: ";
+    for(int i = 0; i< n; i++)
+    {
+        cin >> vetor[i];
+    }
+    cout << "\nValores de saida: ";
+    for(int i = 0; i< n; i++)
+    {
+        cout << vetor[i] << "\t";
+    }
+    QuickSort(vetor, 0, x);
+
+    cout << "\nValores Ordenados: ";
+    for(int i = 0; i< n; i++)
+    {
+        cout << vetor[i] << "\t";
+    }
+
+
+
+    return 0;
+}
+
+
